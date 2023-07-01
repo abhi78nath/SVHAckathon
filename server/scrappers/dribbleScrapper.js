@@ -10,7 +10,7 @@ async function scrapeDribbbleProfile(username) {
     const url = `https://dribbble.com/${username}`;
     await page.goto(url);
 
-    await page.waitForSelector('.work-details');
+    await page.waitForSelector('.work');
     await page.waitForSelector('.shot-thumbnail-title');
     await page.waitForSelector('.shot-thumbnail-image');
     await page.waitForSelector('.skill-name');
