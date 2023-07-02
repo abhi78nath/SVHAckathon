@@ -1,15 +1,9 @@
-const express = require('express');
 const { scrapeCodeforcesProfile } = require('../../scrappers/codeforcesScrapper');
 const CodeforcesProfile = require('../../models/CodeforcesSchema');
 const { URL } = require('url');
 
-
-const router = express.Router();
-
-router.get('/codeforces', async (req, res) => {
+async function getCodeforcesData(url) {
   try {
-    const { url } = req.query;
-
     // Extract the handle from the URL
     const parsedUrl = new URL(url);
     const handle = parsedUrl.pathname.split('/')[2];
@@ -19,19 +13,19 @@ router.get('/codeforces', async (req, res) => {
     // Save the scraped data to MongoDB Atlas
     const codeforcesProfile = new CodeforcesProfile({
       handle,
-      rating: scrapedData.rating,
-      maxRating: scrapedData.maxRating,
       rank: scrapedData.rank,
-      maxRank: scrapedData.maxRank,
+      rating: scrapedData.rating,
       contribution: scrapedData.contribution,
+      mostUsedLanguages: scrapedData.mostUsedLanguages,
+      // maxRank: scrapedData.maxRank,
     });
 
     await codeforcesProfile.save();
 
-    res.json(scrapedData);
+    return codeforcesProfile;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw error;
   }
-});
+}
 
-module.exports = router;
+module.exports = getCodeforcesData;

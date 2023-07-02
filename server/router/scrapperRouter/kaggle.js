@@ -1,19 +1,13 @@
-const express = require('express');
 const { scrapeKaggleProfile } = require('../../scrappers/kaggleScrapper');
 const KaggleSchema = require('../../models/KaggleSchema');
 const { URL } = require('url');
 
-
-const router = express.Router();
-
-router.get('/kaggle', async (req, res) => {
+async function getKaggleData(candidateId, url) {
   try {
-    const { url } = req.query;
-
     // Extract the username from the URL
     const parsedUrl = new URL(url);
     const username = parsedUrl.pathname.split('/')[1];
-    console.log(username)
+    console.log(username);
 
     const scrapedData = await scrapeKaggleProfile(username);
 
@@ -31,10 +25,10 @@ router.get('/kaggle', async (req, res) => {
 
     await kaggleProfile.save();
 
-    res.json(scrapedData);
+    return scrapedData;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw error;
   }
-});
+}
 
-module.exports = router;
+module.exports = getKaggleData;

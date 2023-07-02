@@ -1,36 +1,30 @@
-const express = require('express');
-const { scrapeGitHubUserDetails } = require('../../scrappers/github')
-const githubSchema = require('../../models/githubSchema');
+const { scrapeGitHubUserDetails } = require('../../scrappers/github');
+const GithubProfile = require('../../models/githubSchema');
 const { URL } = require('url');
 
-const router = express.Router();
-
-router.get('/git', async (req, res) => {
+async function getGitHubData(url) {
   try {
-    const { url } = req.query;
-
     // Extract the username from the URL
     const parsedUrl = new URL(url);
     const username = parsedUrl.pathname.split('/')[1];
-    console.log(username)
 
     const scrapedData = await scrapeGitHubUserDetails(username);
 
-    // Save the scraped data to MongoDB Atlas
-    const githubProfile = new githubSchema({
+    // Create the GitHub profile object
+    const githubProfile = new GithubProfile({
       username,
       name: scrapedData.name,
-      repocount:scrapedData.repoCount,
-      contribution: scrapedData.contributionCount,
-      
+      repoCount: scrapedData.repoCount,
+      contributionCount: scrapedData.contributionCount,
     });
 
+    // Save the GitHub profile to MongoDB Atlas
     await githubProfile.save();
 
-    res.json(scrapedData);
+    return githubProfile;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw error;
   }
-});
+}
 
-module.exports = router;
+module.exports = getGitHubData;
