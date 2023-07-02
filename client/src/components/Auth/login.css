@@ -65,6 +65,13 @@
     margin-left: 1rem;
 }
 
+.candidate:hover{
+    cursor: pointer;
+}
+.recruiter:hover{
+   cursor: pointer;
+}
+
 input{
     height: 1.6rem;
     width: 11.5rem;
