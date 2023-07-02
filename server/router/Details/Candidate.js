@@ -7,6 +7,7 @@ const getCodeforcesData = require('../scrapperRouter/cf');
 const getDribbleData = require('../scrapperRouter/dribbble')
 const getKaggleData = require('../scrapperRouter/kaggle')
 const getGitHubData = require('../scrapperRouter/git');
+const fetchUser = require('../../middleware/fetchcandidate');
 const router = express.Router();
 
 // Route 2: Add a new CandidateDetail using POST "/api/candidatedetails/adddetails". Login required
@@ -70,5 +71,44 @@ router.post(
     }
   }
 );
+
+
+// Route: Fetch Candidate Details using GET "/api/candidatedetails". Login required
+// Route: Fetch Candidate Details using GET "/api/candidatedetails". Login required
+router.get('/fetch', fetchcandidate, async (req, res) => {
+  try {
+    // Find the candidate details based on the logged-in user's ID
+    const candidateDetails = await CandidateDetails.findOne({ user: req.user.id })
+      .populate('codeforcesData', '-__v')
+      .populate('dribbbleData', '-__v');
+
+    // If candidate details are not found, return 404 Not Found error
+    if (!candidateDetails) {
+      return res.status(404).json({ error: 'Candidate details not found' });
+    }
+
+    // Transform the data to the desired format
+    const formattedData = {
+      user: candidateDetails.user,
+      name: candidateDetails.name,
+      email: candidateDetails.email,
+      roles: candidateDetails.roles,
+      phone: candidateDetails.phone,
+      experience: candidateDetails.experience,
+      codeforcesData: candidateDetails.codeforcesData,
+      dribbbleData: candidateDetails.dribbbleData,
+      _id: candidateDetails._id,
+      date: candidateDetails.date,
+      // __v: candidateDetails.__v
+    };
+
+    res.json(formattedData);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 
 module.exports = router;

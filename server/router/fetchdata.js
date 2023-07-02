@@ -1,5 +1,5 @@
 const express = require('express');
-const CandidateDetails = require('../../models/CandidateSchema');
+const CandidateDetails = require('../models/CandidateSchema');
 
 const router = express.Router();
 
