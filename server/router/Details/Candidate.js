@@ -6,6 +6,7 @@ const CandidateDetails = require('../../models/CandidateSchema');
 const getCodeforcesData = require('../scrapperRouter/cf');
 const getDribbleData = require('../scrapperRouter/dribbble')
 const getKaggleData = require('../scrapperRouter/kaggle')
+const getGitHubData = require('../scrapperRouter/git');
 const router = express.Router();
 
 // Route 2: Add a new CandidateDetail using POST "/api/candidatedetails/adddetails". Login required
@@ -19,6 +20,7 @@ router.post(
     body('experience', 'Experience must be at least 5 characters').isLength({ min: 5 }),
     body('codeforcesurl').isURL(),
       body('dribbbleurl').isURL(),
+      // body('githuburl').isURL(),
       // body('kaggleurl').isURL(),
   ],
   async (req, res) => {
@@ -40,6 +42,8 @@ router.post(
       // Scrape Kaggle data
       // const scrapedKaggleData = await getKaggleData(kaggleurl);
 
+      // const scrapeGitHubData = await getGitHubData(githuburl)
+
       // Create the candidate details object
       const candidateDetails = new CandidateDetails({
         user: req.user.id,
@@ -52,6 +56,7 @@ router.post(
         codeforcesData: scrapedCodeforcesData,
         dribbbleData: scrapedDribbbleData,
         // kaggleData: scrapedKaggleData,
+        // githubData: scrapeGitHubData
         
       });
 

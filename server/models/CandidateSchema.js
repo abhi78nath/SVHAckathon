@@ -67,6 +67,10 @@ const CandidateDetailsSchema = new mongoose.Schema({
     //     type: mongoose.Schema.Types.Map,
     //     ref:'KaggleProfile',
     // },
+    // githubData: {
+    //     type: mongoose.Schema.Types.Array,
+    //     ref:'githubProfile'
+    // },
     date: {
         type: Date,
         default: Date.now,
