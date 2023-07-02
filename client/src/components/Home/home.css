@@ -1,0 +1,74 @@
+.home{
+    display: flex;
+    flex-direction: column;
+}
+.heroPart{
+    height: 50vh;
+}
+
+.guide{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    font-style: Lexend;
+}
+
+.guidevis{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    padding: 2rem;
+}
+.items1{
+    text-align: center;
+}
+.items5{
+    grid-row:2/3;
+    grid-column: 5/6;
+}
+.items2{
+    grid-row-start: 3;
+    text-align: center;
+}
+.arr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sph{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textOverlap{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    z-index: 1;
+    flex-wrap: wrap;
+    width: 2.5rem;
+}
+
+.guideText{
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+/*------------------- Responsiveness--------------- */
+
+@media screen and (max-width: 760px) {
+
+    .guide{
+        padding: unset;
+    }
+    .guidevis{
+        padding: unset;
+    }
+
+    .sph,.arr,.arrB,.items1,.items2,.items5{
+        transform: scale(0.3);
+    }
+
+}

@@ -1,0 +1,13 @@
+.showResults{
+    height: 1.8rem;
+    width: 15rem;
+    border-radius: 5px;
+    margin-top: 0.4rem;
+    color: white;
+    Font: Lexend;
+    font-size: small;
+    background-color: #767070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
