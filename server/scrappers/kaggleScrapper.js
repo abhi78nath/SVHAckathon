@@ -10,19 +10,19 @@ async function scrapeKaggleProfile(username) {
 
         await page.waitForSelector('.pageheader__nav-wrapper');
 
-        const competitions = await page.$eval('#pageheader-nav-item--competitions .pageheader__link-count span', element => element.textContent.trim());
+        const competitions = await page.$eval('#pageheader-nav-item--competitions .pageheader__link-count span', element => element.textContent.trim().replace(/,/g, ''));
 
-        const datasets = await page.$eval('#pageheader-nav-item--datasets .pageheader__link-count span', element => element.textContent.trim());
+        const datasets = await page.$eval('#pageheader-nav-item--datasets .pageheader__link-count span', element => element.textContent.trim().replace(/,/g, ''));
 
-        const code = await page.$eval('#pageheader-nav-item--code .pageheader__link-count span', element => element.textContent.trim());
+        const code = await page.$eval('#pageheader-nav-item--code .pageheader__link-count span', element => element.textContent.trim().replace(/,/g, ''));
 
-        const discussions = await page.$eval('#pageheader-nav-item--discussion .pageheader__link-count span', element => element.textContent.trim());
+        const discussions = await page.$eval('#pageheader-nav-item--discussion .pageheader__link-count span', element => element.textContent.trim().replace(/,/g, ''));
 
         const discussionSummary = await page.$eval('.achievement-summary__rank-box--current .achievement-summary__rank-text', element => element.textContent.trim()); //giving some other number instead of what is shown --to be fixed
 
         const discussionSummaryBottom = await page.$eval('.achievement-summary__rank-box--current .achievement-summary__rank-label--bottom', element => element.textContent.trim()); //giving some other number instead of what is shown --to be fixed
 
-        const followers = await page.$eval('#pageheader-nav-item--followers .pageheader__link-count span', element => element.textContent.trim());
+        const followers = await page.$eval('#pageheader-nav-item--followers .pageheader__link-count span', element => element.textContent.trim().replace(/,/g, ''));
 
 
 
