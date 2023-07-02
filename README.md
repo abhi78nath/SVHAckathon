@@ -45,6 +45,9 @@ npm start
 - Express.js: A flexible and minimalist web application framework for Node.js.
 - React: A JavaScript library for building user interfaces.
 - Node.js: A JavaScript runtime environment used for server-side development.
+- Jupyter: An interactive notebook environment for data analysis and visualization.
+- pandas: A powerful data manipulation and analysis library for Python.
+- NumPy: A fundamental package for scientific computing with Python.
 - scikit-learn: A machine learning library in Python used for building and training the candidate sorting algorithm.
 - Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js.
 
