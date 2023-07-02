@@ -111,8 +111,10 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -132,6 +134,7 @@ function Signup() {
 
       console.log("API Response:", response.data);
       localStorage.setItem("userInfo", JSON.stringify(response.data));
+      navigate('/socialLinks');
     } catch (error) {
       console.error("API Error:", error);
     }

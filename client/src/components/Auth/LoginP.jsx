@@ -4,7 +4,7 @@ import "./login.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function Login() {
+function LoginP() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -164,4 +164,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginP;

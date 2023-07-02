@@ -1,11 +1,11 @@
 import React from 'react'
 import "./login.css";
 
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function LoginR() {
   const navigate = useNavigate();
  const [email,setEmail]=useState();
  const [password,setPassword]=useState();
@@ -14,14 +14,20 @@ function Login() {
     console.log(email,password);
 
     try{
-        const {data}=await axios.post("https://server2-wt2y.onrender.com/candidate/login",{
+        const config={
+            headers:{
+                "Content-Type": "application/json",
+            },
+        };
+
+        const {data}=await axios.post("https://server2-wt2y.onrender.com/employer/login",{
             email,
             password,
-        });
+        },config);
 
         console.log(data);
         localStorage.setItem("userInfo", JSON.stringify(data));
-        navigate('/socialLinks');
+        navigate('/results');
     } catch(error) {
     throw(error);
  }
@@ -55,4 +61,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default LoginR;

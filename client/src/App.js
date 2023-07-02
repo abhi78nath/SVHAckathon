@@ -10,6 +10,8 @@ import Profile from "./components/profileUi/profileUi";
 import Home from "./components/Home/Home";
 import Results from "./components/Results/ResultsUi";
 import Navbar from "./components/Navbar/Navbar";
+import LoginR from "./components/Auth/LoginR";
+import SignupR from "./components/Auth/SignupR";
 function App() {
   return (
     <div className="App">
@@ -22,6 +24,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/results" element={<Results/>}/>
+        <Route path="/loginEmployer" element={<LoginR/>} />
+        <Route path="/signupEmployer" element={<SignupR />} />        
       </Routes>
       </Router>
     </div>
