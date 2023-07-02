@@ -48,7 +48,7 @@ input{
     /* background-color: #767070; */
     background: linear-gradient(94.92deg, rgba(134, 251, 195, 0.846) 12.7%, rgba(127, 248, 190, 0.396) 88.82%);
 
-    color: white;
+    color: black;
 }
 input[type="checkbox"] {
     /* background-color: yellow; */

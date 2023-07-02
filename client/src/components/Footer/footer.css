@@ -1,0 +1,23 @@
+.footer {
+    width: 100%;
+    background: rgba(134, 251, 195, 0.9);
+    padding: 20px 0;
+  }
+  .footer p {
+    font: 200 15.52px/28px "Poppins", sans-serif;
+    color:black;
+  }
+  .footer span {
+    font-weight: 500;
+  }
+  .footer-container {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+  }
+  .fc-left {
+    margin-left: 1rem;
+  }
+  .fc-right {
+    margin-right: 1rem
+  }

@@ -8,7 +8,7 @@ function Navbar() {
     <div className="container">
 
       <div className="logo-container">
-        <h3 className="logo">Employee<span>Validation</span></h3>
+      <Link to="/"><h3 className="logo">Employee<span>Validation</span></h3></Link>
       </div>
 
       <div className="nav-btn">
