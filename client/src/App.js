@@ -12,6 +12,7 @@ import Results from "./components/Results/ResultsUi";
 import Navbar from "./components/Navbar/Navbar";
 import LoginR from "./components/Auth/LoginR";
 import SignupR from "./components/Auth/SignupR";
+import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
         <Route path="/loginEmployer" element={<LoginR/>} />
         <Route path="/signupEmployer" element={<SignupR />} />        
       </Routes>
+      <Footer/>
       </Router>
     </div>
   );
