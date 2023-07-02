@@ -1,4 +1,4 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require('puppeteer');
 
 async function scrapeDribbbleProfile(username) {
   try {
@@ -8,32 +8,24 @@ async function scrapeDribbbleProfile(username) {
     const url = `https://dribbble.com/${username}`;
     await page.goto(url);
 
-    await page.waitForSelector(".work");
-    await page.waitForSelector(".projects");
-    await page.waitForSelector(".collections");
-    await page.waitForSelector(".liked");
+    await page.waitForSelector('.work');
+    await page.waitForSelector('.projects');
+    await page.waitForSelector('.collections');
+    await page.waitForSelector('.liked');
 
-    const works = await page.$eval(".work .count", (element) =>
-      element.textContent.trim()
-    );
-    const projects = await page.$eval(".projects .count", (element) =>
-      element.textContent.trim()
-    );
-    const collections = await page.$eval(".collections .count", (element) =>
-      element.textContent.trim()
-    );
-    const likedShots = await page.$eval(".liked .count", (element) =>
-      element.textContent.trim()
-    );
+    const works = await page.$eval('.work .count', element => element.textContent.trim());
+    const projects = await page.$eval('.projects .count', element => element.textContent.trim());
+    const collections = await page.$eval('.collections .count', element => element.textContent.trim());
+    const likedShots = await page.$eval('.liked .count', element => element.textContent.trim());
 
-    console.log(works);
-    console.log(projects);
-    console.log(collections);
-    console.log(likedShots);
-    // console.log('Work Details:', workDetails);
-    // console.log('Projects:', projects);
-    // console.log('Collections:', collections);
-    // console.log('Liked Shots:', likedShots);
+    // console.log(works);
+    // console.log(projects);
+    // console.log(collections);
+    // console.log(likedShots);
+    console.log('Work Details:', works);
+    console.log('Projects:', projects);
+    console.log('Collections:', collections);
+    console.log('Liked Shots:', likedShots);
 
     await browser.close();
 

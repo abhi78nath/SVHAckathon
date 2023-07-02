@@ -1,7 +1,6 @@
 const puppeteer = require("puppeteer");
 
-const scrapeGitHubUserDetails=async(req,res)=> {
-  const {githubUser}=req.body;
+async function scrapeGitHubUserDetails(gitgubUser) {
   const browser = await puppeteer.launch({ headless: "new" });
 
   const page = await browser.newPage();
@@ -68,8 +67,8 @@ const scrapeGitHubUserDetails=async(req,res)=> {
     };
 
     // return res.status(200).json({gitobj});
-    // return gitobj;
-    res.json(gitobj);
+    return gitobj;
+    
     // try{
     //   return res.status(200).json({gitobj});
     // } catch(err){

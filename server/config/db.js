@@ -1,18 +1,18 @@
-const mongoose = require("mongoose");
-const colors = require("colors");
+const mongoose = require('mongoose');
+const colors = require('colors')
+require('dotenv').config();
 
-const connectDB = async () => {
+async function connectToDatabase() {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    const mongoURI = process.env.MONGODB;
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
-
-    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+    console.log('Connected to MongoDB Atlas');
   } catch (error) {
-    console.log(`Error: ${error.message}`.red.bold);
-    process.exit();
+    console.error('Error connecting to MongoDB Atlas:', error);
   }
-};
+}
 
-module.exports = connectDB;
+module.exports = { connectToDatabase };
