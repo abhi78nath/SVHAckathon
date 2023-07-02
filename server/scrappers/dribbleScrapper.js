@@ -1,6 +1,4 @@
-// scraper.js
-
-const puppeteer = require('puppeteer');
+const puppeteer = require("puppeteer");
 
 async function scrapeDribbbleProfile(username) {
   try {
@@ -10,29 +8,40 @@ async function scrapeDribbbleProfile(username) {
     const url = `https://dribbble.com/${username}`;
     await page.goto(url);
 
-    await page.waitForSelector('.work');
-    await page.waitForSelector('.shot-thumbnail-title');
-    await page.waitForSelector('.shot-thumbnail-image');
-    await page.waitForSelector('.skill-name');
+    await page.waitForSelector(".work");
+    await page.waitForSelector(".projects");
+    await page.waitForSelector(".collections");
+    await page.waitForSelector(".liked");
 
-    const workDetails = await page.$eval('.work-details', (element) => element.textContent.trim());
-    const projects = await page.$$eval('.shot-thumbnail-title', (elements) =>
-      elements.map((element) => element.textContent.trim())
+    const works = await page.$eval(".work .count", (element) =>
+      element.textContent.trim()
     );
-    const likedShots = await page.$$eval('.shot-thumbnail-image', (elements) =>
-      elements.map((element) => element.src)
+    const projects = await page.$eval(".projects .count", (element) =>
+      element.textContent.trim()
     );
-    const skills = await page.$$eval('.skill-name', (elements) =>
-      elements.map((element) => element.textContent.trim())
+    const collections = await page.$eval(".collections .count", (element) =>
+      element.textContent.trim()
     );
+    const likedShots = await page.$eval(".liked .count", (element) =>
+      element.textContent.trim()
+    );
+
+    console.log(works);
+    console.log(projects);
+    console.log(collections);
+    console.log(likedShots);
+    // console.log('Work Details:', workDetails);
+    // console.log('Projects:', projects);
+    // console.log('Collections:', collections);
+    // console.log('Liked Shots:', likedShots);
 
     await browser.close();
 
     const scrapedData = {
-      workDetails,
+      works,
       projects,
+      collections,
       likedShots,
-      skills,
     };
 
     return scrapedData;
