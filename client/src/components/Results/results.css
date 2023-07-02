@@ -3,11 +3,17 @@
     width: 15rem;
     border-radius: 5px;
     margin-top: 0.4rem;
-    color: white;
+    color: black;
     Font: Lexend;
     font-size: small;
-    background-color: #767070;
+    /* background-color: #767070; */
+    background: rgba(134, 251, 195, 0.6);
+
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.go{
+    margin-top: 3rem;
 }

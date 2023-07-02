@@ -17,10 +17,10 @@ function Resultsui() {
   return (
     <div className="profileData">
       <div className="personalData">
-        <div className="Name_label">
+        {/* <div className="Name_label">
           <label for="search">Search</label>
           <input type="text" id="search" name="search" />{" "}
-        </div>
+        </div> */}
 
         <div className="roles">
           Roles
@@ -56,9 +56,8 @@ function Resultsui() {
           </span>
         </div>
 
-        <div className="experience_label">
-          <label for="experience">Experience</label>
-          <input type="number" name="experience" id="experience" />
+        <div className="showResults go">
+            GO
         </div>
       </div>
 

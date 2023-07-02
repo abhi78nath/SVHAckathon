@@ -10,8 +10,8 @@ function App() {
       {/* <ProfileDetails /> */}
       {/* <Auth/> */}
       {/* <Profile/> */}
-      {/* <Home/> */}
-      <Results />
+      <Home/>
+      {/* <Results /> */}
     </div>
   );
 }
