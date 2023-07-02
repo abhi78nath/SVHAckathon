@@ -2,10 +2,9 @@ const express = require("express");
 const { connectToDatabase } = require('./config/db');
 const cors = require("cors");
 const dribbble = require('./router/scrapperRouter/dribbble');
-// const { scrapeCodeforcesProfile } = require('./scrappers/codeforcesScrapper');
-const { scrapeDribbbleProfile } = require('./scrappers/dribbleScrapper');
 const kaggle = require('./router/scrapperRouter/kaggle')
 const cf = require('./router/scrapperRouter/cf')
+const gitroute=require('./router/scrapperRouter/git');
 const employerAuth = require('./router/AuthRoutes/Employer')
 const candidateAuth = require('./router/AuthRoutes/Candidate')
 
@@ -19,10 +18,7 @@ app.use(express.json()); // to accept json data
 
 connectToDatabase();
 
-// let username = 'stepanovdesign'
-let usernamedrib = 'moova_agency'
-let usernamekag = 'redwankarimsony'
-let usernamecf = 'jiangly'
+
 
 app.get('/', (req,res) => {
   res.send("Welcome");
@@ -31,6 +27,7 @@ app.get('/', (req,res) => {
 app.use('/', dribbble);
 app.use('/', kaggle);
 app.use('/', cf);
+app.use('/',gitroute)
 app.use('/employer', employerAuth);
 app.use('/candidate', candidateAuth);
 
@@ -55,7 +52,4 @@ app.use('/candidate', candidateAuth);
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(
-  PORT,
-  console.log(`Server running on PORT ${PORT}...`.yellow.bold)
-);
+app.listen(PORT, console.log(`Server running on PORT ${PORT}...`));
