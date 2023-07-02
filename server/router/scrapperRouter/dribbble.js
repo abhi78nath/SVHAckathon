@@ -22,7 +22,7 @@ async function getDribbleData(url) {
 
     await dribbbleProfile.save();
 
-    return scrapedData;
+    return dribbbleProfile;
   } catch (error) {
     throw error;
   }

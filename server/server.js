@@ -15,6 +15,8 @@ const candidateAuth = require('./router/AuthRoutes/Candidate')
 const candidatedetail = require('./router/Details/Candidate')
 const candidateProfile = require('./router/Profile/CandidateProfile');
 const { scrapeGitHubUserDetails } = require("./scrappers/github");
+const profile = require("./router/fetchdata")
+const fetchroles = require("./router/fetchroles")
 
 
 
@@ -43,7 +45,9 @@ app.get('/', (req,res) => {
 app.use('/employer', employerAuth);
 app.use('/candidate', candidateAuth);
 app.use('/candidate', candidatedetail);
-app.use('/candidate', candidateProfile)
+// app.use('/candidate', candidateProfile);
+app.use('/profile', profile)
+app.get('/api/candidates' , fetchroles)
 
 
 
