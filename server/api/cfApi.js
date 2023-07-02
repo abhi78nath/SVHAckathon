@@ -22,9 +22,11 @@ async function getMostUsedLanguages(username) {
     const sortedLanguages = Object.keys(languageCounts).sort((a, b) => languageCounts[b] - languageCounts[a]);
 
     // Get the top 5 most used languages
-    const mostUsedLanguages = sortedLanguages.slice(0, 5);
+    const mostUsedLanguages = sortedLanguages.slice(0, 1);
+    const mostUsedLanguage = mostUsedLanguages[0];
+    
 
-    return mostUsedLanguages;
+    return mostUsedLanguage;
   } catch (error) {
     throw error;
   }
