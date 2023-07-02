@@ -56,12 +56,12 @@ const CandidateDetailsSchema = new mongoose.Schema({
     //     },
     // },
     codeforcesData: {
-        type: mongoose.Schema.Types.Array,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'CodeforcesProfile',
-      },
+    },
     dribbbleData: {
-        type: mongoose.Schema.Types.Array,
-        ref:'DribbbleProfile',
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'DribbbleProfile',
     },
     // kaggleData: {
     //     type: mongoose.Schema.Types.Map,

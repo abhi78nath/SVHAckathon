@@ -4,7 +4,7 @@ const codeforcesSchema = new mongoose.Schema({
   handle: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
   },
   rank: {
     type: String,
