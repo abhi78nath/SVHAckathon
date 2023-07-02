@@ -15,11 +15,11 @@ const codeforcesSchema = new mongoose.Schema({
     required:true
 },
 contribution: {
-    type: Number,
+    type: String,
     required:true
 },
 mostUsedLanguages: {
-    type: [String],
+    type: String,
     required:true
   },
 });

@@ -1,18 +1,13 @@
-const express = require('express');
-const { scrapeDribbbleProfile } = require('../../scrappers/dribbleScrapper')
+const { scrapeDribbbleProfile } = require('../../scrappers/dribbleScrapper');
 const DribbbleSchema = require('../../models/DribbleSchema');
 const { URL } = require('url');
 
-const router = express.Router();
-
-router.get('/dribbble', async (req, res) => {
+async function getDribbleData(url) {
   try {
-    const { url } = req.query;
-
     // Extract the username from the URL
     const parsedUrl = new URL(url);
     const username = parsedUrl.pathname.split('/')[1];
-    console.log(username)
+    console.log(username);
 
     const scrapedData = await scrapeDribbbleProfile(username);
 
@@ -27,10 +22,10 @@ router.get('/dribbble', async (req, res) => {
 
     await dribbbleProfile.save();
 
-    res.json(scrapedData);
+    return scrapedData;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw error;
   }
-});
+}
 
-module.exports = router;
+module.exports = getDribbleData;
