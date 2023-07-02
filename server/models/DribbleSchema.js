@@ -6,19 +6,19 @@ const dribbbleProfileSchema = new mongoose.Schema({
         required: true 
     },
     works: { 
-        type: Number, 
+        type: String, 
         required: true 
     },
     projects: { 
-        type: Number, 
+        type: String, 
         required: true 
     },
     collections: { 
-        type: Number, 
+        type: String, 
         required: true 
     },
     likedShots: { 
-        type: Number, 
+        type: String, 
         required: true 
     },
 });

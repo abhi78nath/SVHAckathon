@@ -2,7 +2,7 @@ const express = require("express");
 const { connectToDatabase } = require('./config/db');
 const cors = require("cors");
 const dribbble = require('./router/scrapperRouter/dribbble');
-const { scrapeCodeforcesProfile } = require('./scrappers/codeforcesScrapper');
+// const { scrapeCodeforcesProfile } = require('./scrappers/codeforcesScrapper');
 const { scrapeDribbbleProfile } = require('./scrappers/dribbleScrapper');
 const kaggle = require('./router/scrapperRouter/kaggle')
 const cf = require('./router/scrapperRouter/cf')
@@ -31,22 +31,22 @@ app.use('/', kaggle);
 app.use('/', cf);
 
 
-app.get('/codeforces', async (req, res) => {
-  try {
-    const data = await scrapeCodeforcesProfile(usernamecf);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'An error occurred' });
-  }
-})
-// app.get('/dribbble', async (req, res) => {
+// app.get('/codeforces', async (req, res) => {
 //   try {
-//     const data = await scrapeDribbbleProfile(usernamedrib);
+//     const data = await scrapeCodeforcesProfile(usernamecf);
 //     res.json(data);
 //   } catch (error) {
 //     res.status(500).json({ error: 'An error occurred' });
 //   }
 // })
+app.get('/dribbble', async (req, res) => {
+  try {
+    const data = await scrapeDribbbleProfile(usernamedrib);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+})
 
 const PORT = process.env.PORT || 5000;
 
