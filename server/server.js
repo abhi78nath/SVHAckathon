@@ -6,6 +6,8 @@ const dribbble = require('./router/scrapperRouter/dribbble');
 const { scrapeDribbbleProfile } = require('./scrappers/dribbleScrapper');
 const kaggle = require('./router/scrapperRouter/kaggle')
 const cf = require('./router/scrapperRouter/cf')
+const employerAuth = require('./router/AuthRoutes/Employer')
+const candidateAuth = require('./router/AuthRoutes/Candidate')
 
 
 
@@ -29,6 +31,9 @@ app.get('/', (req,res) => {
 app.use('/', dribbble);
 app.use('/', kaggle);
 app.use('/', cf);
+app.use('/employer', employerAuth);
+app.use('/candidate', candidateAuth);
+
 
 
 // app.get('/codeforces', async (req, res) => {
@@ -39,14 +44,14 @@ app.use('/', cf);
 //     res.status(500).json({ error: 'An error occurred' });
 //   }
 // })
-app.get('/dribbble', async (req, res) => {
-  try {
-    const data = await scrapeDribbbleProfile(usernamedrib);
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'An error occurred' });
-  }
-})
+// app.get('/dribbble', async (req, res) => {
+//   try {
+//     const data = await scrapeDribbbleProfile(usernamedrib);
+//     res.json(data);
+//   } catch (error) {
+//     res.status(500).json({ error: 'An error occurred' });
+//   }
+// })
 
 const PORT = process.env.PORT || 5000;
 
