@@ -18,14 +18,14 @@ async function scrapeDribbbleProfile(username) {
     const collections = await page.$eval('.collections .count', element => element.textContent.trim());
     const likedShots = await page.$eval('.liked .count', element => element.textContent.trim());
 
-    console.log(works);
-    console.log(projects);
-    console.log(collections);
-    console.log(likedShots);
-    // console.log('Work Details:', workDetails);
-    // console.log('Projects:', projects);
-    // console.log('Collections:', collections);
-    // console.log('Liked Shots:', likedShots);
+    // console.log(works);
+    // console.log(projects);
+    // console.log(collections);
+    // console.log(likedShots);
+    console.log('Work Details:', works);
+    console.log('Projects:', projects);
+    console.log('Collections:', collections);
+    console.log('Liked Shots:', likedShots);
 
     await browser.close();
 
